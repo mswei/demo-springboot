@@ -1,0 +1,10 @@
+server:
+  port: 8888
+me:
+  name: weiwei
+  age: 28
+  uuid: ${random.uuid}
+  number: ${random.int}
+  max: ${random.int(100)}
+  value: ${random.value}
+  greeting: Hi, I'm ${me.name}
