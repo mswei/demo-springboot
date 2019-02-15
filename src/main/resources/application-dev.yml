@@ -20,11 +20,3 @@ spring:
     hibernate:
       ddl-auto: update # 第一次建表create，后面用update
     show-sql: true
-me:
-  name: weiwei
-  age: 28
-  uuid: ${random.uuid}
-  number: ${random.int}
-  max: ${random.int(100)}
-  value: ${random.value}
-  greeting: Hi, I'm ${me.name}
