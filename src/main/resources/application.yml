@@ -1,14 +1,14 @@
 spring:
   profiles:
     active: dev
-#management:
-#  endpoint:
-#    shutdown:
-#      enabled: true
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
-#        # 暴露Actuator的所有端点(SpringBoot 2.0写法)
-#  server:
-#    port: 5555
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # 暴露Actuator的所有端点(默认只暴露health和info；访问路径：IP:Port/actuator/health等)
+  endpoint:
+    health:
+      show-details: always

@@ -1,22 +1,19 @@
 server:
   port: 8888
-spring:
-  redis:
-    host: 192.168.100.2
-    port: 6379
-    password:
-    database: 0 # 数据库索引（默认值0）
-    jedis:
-      pool:
-        max-active: 10 # 最大连接数
-        max-wait: -1ms # 最大阻塞等待时间
-        max-idle: 10 # 最大空闲连接数
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.100.2:3306/spring?useSSL=false
-    username: root
-    password: root
-  jpa:
-    hibernate:
-      ddl-auto: update # 第一次建表create，后面用update
-    show-sql: true
+#spring:
+#  redis:
+#    host: 192.168.100.2
+#    port: 6379
+#    password:
+#    database: 0 # 数据库索引（默认值0）
+#    jedis:
+#      pool:
+#        max-active: 10 # 最大连接数
+#        max-wait: -1ms # 最大阻塞等待时间
+#        max-idle: 10 # 最大空闲连接数
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.100.2:3306/spring?useSSL=false
+#    username: root
+#    password: root
+
