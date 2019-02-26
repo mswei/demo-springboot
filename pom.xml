@@ -20,7 +20,7 @@
         <module>eureka-client</module>
     </modules>
 
-    <name>Spring Boot Demo</name>
+    <name>demo-springboot</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
