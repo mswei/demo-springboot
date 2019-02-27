@@ -1,4 +1,4 @@
-package cn.weiwei.demo.eureka.client;
+package cn.weiwei;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
