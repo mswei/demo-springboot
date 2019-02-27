@@ -15,6 +15,9 @@ public class EurekaRibbonClientApplication {
         SpringApplication.run(EurekaRibbonClientApplication.class, args);
     }
 
+    /**
+     * RestTemplate结合Ribbon开启负载均衡，使用@LoadBalanced注解
+     */
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
