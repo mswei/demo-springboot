@@ -1,0 +1,27 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: server1
+  server:
+    enable-self-preservation: false # 关闭自我保护模式（缺省为打开）
+    #    eviction-interval-timer-in-ms: 10000 # 续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+    # renewal-percent-threshold: 0.15 # Server自我保护模式阈值，默认0.85
+    # Renews threshold = 1 + 2 * n (n为客户端个数)
+    # Renews (last min) 过去一分钟内收到的心跳 (每个客户端默认30秒发送一次)
+    # 当 Renews/Renews threshold 的比值低于阈值时，Server开启自我保护模式，不会删除注册信息
+  client:
+    #    register-with-eureka: false
+    #    fetch-registry: false
+    region: region233
+    service-url:
+      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      zone1: http://server0:8000/eureka,http://server1:8001/eureka # 多节点配置，向其他Server注册当前Server
+      zone2: http://server2:8002/eureka,http://server3:8003/eureka
+    availability-zones:
+      region233: zone1,zone2

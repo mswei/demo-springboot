@@ -12,9 +12,11 @@ eureka:
   client:
     region: region233
     service-url:
-      zone1: http://192.168.0.123:8000/eureka
+      #      zone1: http://192.168.0.123:8000/eureka
+      zone1: http://server0:8000/eureka,http://server1:8001/eureka
+      zone2: http://server2:8002/eureka,http://server3:8003/eureka
     availability-zones:
-      region233: zone1
+      region233: zone1,zone2
 
 management:
   server:
