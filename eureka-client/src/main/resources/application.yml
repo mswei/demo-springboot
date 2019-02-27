@@ -6,17 +6,19 @@ spring:
     name: eureka-client
 
 eureka:
-  #  instance:
-  #    lease-renewal-interval-in-seconds: 5 # 心跳时间，即服务续约间隔时间（缺省为30s）
-  #    lease-expiration-duration-in-seconds: 10 # 发呆时间，即服务续约到期时间（缺省为90s）
+  instance:
+    hostname: localhost # 不指定的话则取当前主机名
+    lease-renewal-interval-in-seconds: 5 # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 10 # 发呆时间，即服务续约到期时间（缺省为90s）
   client:
     region: region233
     service-url:
       #      zone1: http://192.168.0.123:8000/eureka
-      zone1: http://server0:8000/eureka,http://server1:8001/eureka
-      zone2: http://server2:8002/eureka,http://server3:8003/eureka
+      #      zone1: http://server0:8000/eureka,http://server1:8001/eureka
+      #      zone2: http://server2:8002/eureka,http://server3:8003/eureka
+      zone1: http://localhost:8000/eureka
     availability-zones:
-      region233: zone1,zone2
+      region233: zone1
 
 management:
   server:
@@ -25,7 +27,6 @@ management:
     web:
       exposure:
         include: "*"
-        # 暴露Actuator的所有端点(默认只暴露health和info；访问路径：IP:Port/actuator/health等)
   endpoint:
     health:
       show-details: always
