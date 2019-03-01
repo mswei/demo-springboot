@@ -25,8 +25,8 @@ feign:
     enabled: true # 启用熔断器
 
 management:
-  server:
-    port: 8111
+  #  server:
+  #    port: 8111 # Actuator和主程序使用同一端口，否则无法访问hystrix.stream
   endpoints:
     web:
       exposure:

@@ -21,8 +21,8 @@ eureka:
       region233: zone1
 
 management:
-  server:
-    port: 8101
+  #  server:
+  #    port: 8101 # Actuator和主程序使用同一端口，否则无法访问hystrix.stream
   endpoints:
     web:
       exposure:

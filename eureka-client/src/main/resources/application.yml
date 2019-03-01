@@ -21,8 +21,8 @@ eureka:
       region233: zone1
 
 management:
-  server:
-    port: 8011
+  #  server:
+  #    port: 8011
   endpoints:
     web:
       exposure:
