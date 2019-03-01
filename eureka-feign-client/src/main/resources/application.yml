@@ -20,6 +20,10 @@ eureka:
     availability-zones:
       region233: zone1
 
+feign:
+  hystrix:
+    enabled: true # 启用熔断器
+
 management:
   server:
     port: 8111
