@@ -16,6 +16,7 @@ zuul:
     port-feign-api:
       path: /fapi/**
       service-id: eureka-feign-client
+  prefix: /v1 # API接口版本号
 
 eureka:
   instance:
