@@ -5,6 +5,14 @@ spring:
   application:
     name: zipkin-server
 
+zipkin:
+  collector:
+    # Zipkin Server集成Kafka相关配置
+    kafka:
+      bootstrap-servers: localhost:9092
+      zookeeper: localhost:2181
+      topic: zipkin
+
 eureka:
   instance:
     hostname: localhost # 不指定的话则取当前主机名
