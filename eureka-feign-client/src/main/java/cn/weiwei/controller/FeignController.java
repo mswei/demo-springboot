@@ -16,7 +16,7 @@ public class FeignController {
         this.service = service;
     }
 
-    @GetMapping("/feign")
+    @GetMapping("/port")
     public String port(@RequestParam(required = false, defaultValue = "weiwei") String name) {
         return service.port(name);
     }

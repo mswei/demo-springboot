@@ -17,8 +17,8 @@ eureka:
     # Renews (last min) 过去一分钟内收到的心跳 (每个客户端默认30秒发送一次)
     # 当 Renews/Renews threshold 的比值低于阈值时，Server开启自我保护模式，不会删除注册信息
   client:
-    #    register-with-eureka: false
-    #    fetch-registry: false
+    register-with-eureka: false
+    fetch-registry: false
     region: region233
     service-url:
       #      zone1: http://192.168.0.123:8000/eureka,http://192.168.0.184:8000/eureka # 多节点配置，向其他Server注册当前Server
@@ -37,3 +37,8 @@ management:
   endpoint:
     health:
       show-details: always
+
+logging:
+  level:
+    root: info
+    cn.weiwei.demo.eureka.server: trace

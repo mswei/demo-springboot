@@ -12,7 +12,7 @@ public class PortController {
     private String port;
 
     @GetMapping("/port")
-    public String port(@RequestParam String name) {
+    public String port(@RequestParam(required = false, defaultValue = "weiwei") String name) {
         return "Hi " + name + ", now the port is: " + port;
     }
 
