@@ -22,6 +22,7 @@
         <module>eureka-feign-client</module>
         <module>eureka-monitor-client</module>
         <module>eureka-zuul-client</module>
+        <module>zipkin-server</module>
     </modules>
 
     <name>demo-springboot</name>
