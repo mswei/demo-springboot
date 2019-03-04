@@ -6,14 +6,15 @@ spring:
     name: zipkin-server
 
 zipkin:
-  storage:
-    type: elasticsearch
-    elasticsearch:
-      hosts: http://localhost:9200
-      cluster: elasticsearch
-      index: zipkin
-      index-shards: 1
-      index-replicas: 1
+  # Elasticsearch存储链路数据
+  #  storage:
+  #    type: elasticsearch
+  #    elasticsearch:
+  #      hosts: http://localhost:9200
+  #      cluster: elasticsearch
+  #      index: zipkin
+  #      index-shards: 1
+  #      index-replicas: 1
   collector:
     # Zipkin Server集成Kafka相关配置
     kafka:
