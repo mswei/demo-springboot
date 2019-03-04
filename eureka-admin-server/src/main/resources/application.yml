@@ -1,22 +1,9 @@
 server:
-  port: 8010
+  port: 8500
 
 spring:
   application:
-    name: eureka-client
-  zipkin:
-    #    base-url: http://localhost:8300 # 使用Http传输链路数据
-    sender:
-      type: kafka # 使用Kafka传输链路数据
-  sleuth:
-    sampler:
-      probability: 1.0
-  kafka:
-    bootstrap-servers: localhost:9092
-  boot:
-    admin:
-      client:
-        url: http://localhost:8500
+    name: eureka-admin-server
 
 eureka:
   instance:
@@ -34,8 +21,6 @@ eureka:
       region233: zone1
 
 management:
-  #  server:
-  #    port: 8011
   endpoints:
     web:
       exposure:
