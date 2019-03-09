@@ -14,7 +14,7 @@ public class KafkaConsTest {
     private KafkaCons kafkaCons;
 
     @Test
-    public void testSend() {
+    public void testProcess() {
         kafkaCons.processMessage();
     }
 

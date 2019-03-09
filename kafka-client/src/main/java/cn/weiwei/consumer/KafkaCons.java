@@ -36,9 +36,9 @@ public class KafkaCons {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
                 for (ConsumerRecord<String, String> record : records) {
+                    // 遍历列表，逐条处理Kafka传递的数据
                     log.debug("topic = {}, partition = {}, offset = {}, key = {}, value = {}\n",
                             record.topic(), record.partition(), record.offset(), record.key(), record.value());
-
                     // do something
                 }
             }
