@@ -15,6 +15,7 @@ public class KafkaProd {
     public KafkaProd() {
         Properties kafkaProps = new Properties();
         kafkaProps.put("bootstrap.servers", "192.168.0.200:9092");
+        // kafkaProps.put("partitioner.class", "cn.weiwei.producer.BananaPartitioner");
         kafkaProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         kafkaProps.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
