@@ -40,7 +40,7 @@ public class KafkaCons {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000)); // 轮询阻塞时间（毫秒）
                 for (ConsumerRecord<String, String> record : records) {
                     // 遍历列表，逐条处理Kafka传递的数据
-                    log.debug("topic = {}, partition = {}, offset = {}, key = {}, value = {}\n",
+                    log.debug("topic = {}, partition = {}, offset = {}, key = {}, value = {}",
                             record.topic(), record.partition(), record.offset(), record.key(), record.value());
 
                     // Do something
@@ -64,7 +64,7 @@ public class KafkaCons {
             log.error("Unexpected error: {}", e.getMessage());
         } finally {
             try {
-                consumer.commitSync(); // 同步提交（和异步相组合）偏移量，防止消费者异常关闭时偏移量未提交
+                consumer.commitSync(); // 同步提交（和异步相组合）偏移量，消费者关闭时提交偏移量
             } finally {
                 consumer.close();
                 log.info("Closed consumer and we are done.");

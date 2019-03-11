@@ -27,7 +27,7 @@ public class HandleRebalance implements ConsumerRebalanceListener {
     @Override
     public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
         log.info("Lost partitions in rebalance. Committing current offsets: {}", offsets);
-        consumer.commitSync(offsets);
+        consumer.commitSync(offsets); // 分区再均衡前，即将失去分区所有权时提交偏移量
     }
 
     @Override
