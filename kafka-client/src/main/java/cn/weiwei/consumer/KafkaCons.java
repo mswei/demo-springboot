@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -16,20 +17,22 @@ public class KafkaCons {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaCons.class);
     private Consumer<String, String> consumer;
+    private Map<TopicPartition, OffsetAndMetadata> currentOffsets; // 当前偏移量
 
     public KafkaCons() {
         Properties kafkaProps = new Properties();
         kafkaProps.put("bootstrap.servers", "192.168.0.200:9092");
         kafkaProps.put("group.id", "testGroup01");
-        kafkaProps.put("enable.auto.commit", false); // 关闭自动提交偏移量
+        kafkaProps.put("enable.auto.commit", false); // 关闭自动提交偏移量（默认自动5秒提交一次）
         kafkaProps.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         kafkaProps.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
         consumer = new KafkaConsumer<>(kafkaProps);
+        currentOffsets = new HashMap<>();
     }
 
     public void processMessage() {
-        consumer.subscribe(Collections.singletonList("test"));
+        consumer.subscribe(Collections.singletonList("test"), new HandleRebalance(consumer, currentOffsets));
 
         try {
             // 轮询
@@ -39,10 +42,16 @@ public class KafkaCons {
                     // 遍历列表，逐条处理Kafka传递的数据
                     log.debug("topic = {}, partition = {}, offset = {}, key = {}, value = {}\n",
                             record.topic(), record.partition(), record.offset(), record.key(), record.value());
-                    // do something
+
+                    // Do something
+
+                    // 循环中，记录偏移量
+                    currentOffsets.put(new TopicPartition(record.topic(), record.partition()),
+                            new OffsetAndMetadata(record.offset() + 1, "no metadata"));
                 }
 
-                consumer.commitAsync(new OffsetCommitCallback() { // 异步提交偏移量
+                // 处理当前批次消息结束，异步提交偏移量（也可以挪到循环中，在特定时间点提交）
+                consumer.commitAsync(currentOffsets, new OffsetCommitCallback() {
                     @Override
                     public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
                         if (exception != null) {
@@ -55,9 +64,10 @@ public class KafkaCons {
             log.error("Unexpected error: {}", e.getMessage());
         } finally {
             try {
-                consumer.commitSync(); // 同步提交（和异步相组合）偏移量
+                consumer.commitSync(); // 同步提交（和异步相组合）偏移量，防止消费者异常关闭时偏移量未提交
             } finally {
                 consumer.close();
+                log.info("Closed consumer and we are done.");
             }
         }
     }
