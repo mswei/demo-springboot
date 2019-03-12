@@ -4,8 +4,10 @@ server:
 spring:
   application:
     name: kafka-client
-#  kafka:
-#    producer:
+  kafka:
+    producer:
+      acks: all # 0/1/all
+      retries: 10
 #      bootstrap-servers: 192.168.0.200:9092
 #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
 #      value-serializer: org.apache.kafka.common.serialization.StringSerializer

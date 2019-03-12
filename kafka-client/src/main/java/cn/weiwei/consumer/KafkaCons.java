@@ -37,7 +37,7 @@ public class KafkaCons {
         try {
             // 轮询
             while (true) {
-                ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000)); // 轮询阻塞时间（毫秒）
+                ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(5 * 1000)); // 轮询阻塞时间（毫秒）
                 for (ConsumerRecord<String, String> record : records) {
                     // 遍历列表，逐条处理Kafka传递的数据
                     log.debug("topic = {}, partition = {}, offset = {}, key = {}, value = {}",
