@@ -2,13 +2,13 @@ package cn.weiwei;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-// @EnableEurekaClient
-// @EnableKafka
+@EnableEurekaClient
 @SpringBootApplication
-public class KafkaClientApplication {
+public class KafkaConsumerClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaClientApplication.class, args);
+        SpringApplication.run(KafkaConsumerClientApplication.class, args);
     }
 }

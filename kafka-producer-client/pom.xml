@@ -9,10 +9,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>kafka-client</artifactId>
+    <artifactId>kafka-producer-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>kafka-client</name>
+    <name>kafka-producer-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

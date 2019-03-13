@@ -1,0 +1,41 @@
+server:
+  port: 8600
+
+spring:
+  application:
+    name: kafka-producer-client
+  kafka:
+    bootstrap-servers: 192.168.0.200:9092
+    producer:
+      acks: all # 0/1/all
+      retries: 10
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+eureka:
+  instance:
+    hostname: localhost # 不指定的话则取当前主机名
+    lease-renewal-interval-in-seconds: 5 # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 10 # 发呆时间，即服务续约到期时间（缺省为90s）
+  client:
+    region: region233
+    service-url:
+      #      zone1: http://192.168.0.123:8000/eureka
+      #      zone1: http://server0:8000/eureka,http://server1:8001/eureka
+      #      zone2: http://server2:8002/eureka,http://server3:8003/eureka
+      zone1: http://localhost:8000/eureka
+    availability-zones:
+      region233: zone1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    cn.weiwei: debug

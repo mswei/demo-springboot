@@ -24,7 +24,8 @@
         <module>eureka-zuul-client</module>
         <module>zipkin-server</module>
         <module>eureka-admin-server</module>
-        <module>kafka-client</module>
+        <module>kafka-producer-client</module>
+        <module>kafka-consumer-client</module>
     </modules>
 
     <name>demo-springboot</name>

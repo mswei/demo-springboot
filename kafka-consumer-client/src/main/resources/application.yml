@@ -1,16 +1,11 @@
 server:
-  port: 8600
+  port: 8650
 
 spring:
   application:
-    name: kafka-client
+    name: kafka-consumer-client
   kafka:
     bootstrap-servers: 192.168.0.200:9092
-    producer:
-      acks: all # 0/1/all
-      retries: 10
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
       group-id: testGroup02
       enable-auto-commit: true
