@@ -2,6 +2,7 @@ package cn.weiwei.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
@@ -13,10 +14,10 @@ public class KafkaProd {
 
     public KafkaProd() {
         Properties kafkaProps = new Properties();
-        kafkaProps.put("bootstrap.servers", "192.168.0.200:9092");
-        // kafkaProps.put("partitioner.class", "cn.weiwei.producer.BananaPartitioner");
-        kafkaProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        kafkaProps.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.0.200:9092");
+        // kafkaProps.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, "cn.weiwei.producer.BananaPartitioner");
+        kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
 
         producer = new KafkaProducer<>(kafkaProps);
     }
@@ -30,5 +31,4 @@ public class KafkaProd {
             e.printStackTrace();
         }
     }
-
 }

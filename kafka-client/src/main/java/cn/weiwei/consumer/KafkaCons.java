@@ -20,11 +20,11 @@ public class KafkaCons {
 
     public KafkaCons() {
         Properties kafkaProps = new Properties();
-        kafkaProps.put("bootstrap.servers", "192.168.0.200:9092");
-        kafkaProps.put("group.id", "testGroup01");
-        kafkaProps.put("enable.auto.commit", false); // 关闭自动提交偏移量（默认自动5秒提交一次）
-        kafkaProps.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        kafkaProps.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.0.200:9092");
+        kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG, "testGroup01");
+        kafkaProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false); // 关闭自动提交偏移量（默认自动5秒提交一次）
+        kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 
         consumer = new KafkaConsumer<>(kafkaProps);
         currentOffsets = new HashMap<>();
@@ -70,4 +70,5 @@ public class KafkaCons {
             }
         }
     }
+
 }
