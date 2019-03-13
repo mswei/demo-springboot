@@ -5,12 +5,18 @@ spring:
   application:
     name: kafka-client
   kafka:
+    bootstrap-servers: 192.168.205.2:9092
     producer:
       acks: all # 0/1/all
       retries: 10
-#      bootstrap-servers: 192.168.0.200:9092
-#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: testGroup02
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 eureka:
   instance:
